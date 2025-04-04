@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For LISAA, With Love</title>
+    <style>
+        body {
+            background: #fce6f0;
+            color: #333;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-image: url('https://www.transparenttextures.com/patterns/diagonal-noise.png');
+            background-repeat: repeat;
+            position: relative;
+        }
+        h1 {
+            font-family: 'Cursive', sans-serif;
+            color: #FF5C8D;
+            font-size: 60px;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        #lisaa {
+            font-size: 70px;
+            font-family: 'Lobster', cursive;
+            color: #FF5C8D;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+            animation: heartBeat 1.5s infinite alternate;
+        }
+        .message {
+            font-size: 24px;
+            color: #333;
+            margin-top: 30px;
+            font-style: italic;
+            margin-bottom: 30px;
+            animation: fadeIn 3s ease-in-out;
+        }
+        button {
+            background-color: #FF5C8D;
+            color: white;
+            font-size: 20px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background-color: #FF328B;
+            transform: scale(1.1);
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .sparkle {
+            font-size: 35px;
+            color: #FF5C8D;
+            animation: sparkle 1.5s infinite alternate;
+        }
+        @keyframes sparkle {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        .heart-animation {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 50px;
+            color: red;
+            opacity: 0;
+            animation: heartPop 1.5s forwards;
+        }
+        @keyframes heartPop {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+        }
+        .confetti {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+            display: none;
+        }
+        .confetti div {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #FF5C8D;
+            animation: confettiFall 2s linear infinite;
+        }
+        @keyframes confettiFall {
+            0% {
+                top: -10px;
+                transform: rotate(0deg);
+            }
+            100% {
+                top: 100%;
+                transform: rotate(720deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>For <span id="lisaa">LISAA</span>, With Love 💖</h1>
+    <p class="sparkle">✨✨✨</p>
+    <div class="message" id="message">Click below for a sweet surprise! 💌</div>
+    <button onclick="generateMessage(); showHeart(); playConfetti();">Send Me Love 💘</button>
+
+    <!-- Embedding SoundCloud Track -->
+    <div>
+        <h3>Listen to "Love Song (Bonus)"</h3>
+        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" 
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1382087485&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+        </iframe>
+        <div style="font-size: 10px; color: #cccccc; line-break: anywhere; word-break: normal; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif; font-weight: 100;">
+            <a href="https://soundcloud.com/hyunchae-kim-486860804" title="Hyunchae Kim" target="_blank" style="color: #cccccc; text-decoration: none;">Hyunchae Kim</a> · 
+            <a href="https://soundcloud.com/hyunchae-kim-486860804/love-song-bonus-kaash-paige" title="Love Song (bonus) - Kaash Paige cover" target="_blank" style="color: #cccccc; text-decoration: none;">
+                Love Song (bonus) - Kaash Paige cover
+            </a>
+        </div>
+    </div>
+
+    <div id="confetti" class="confetti"></div>
+
+    <script>
+        const messages = [
+            "Hey LISAA, you’re the reason even my worst days feel worth it 💖",
+            "Every time I see your name, my heart does a little happy dance 🥰",
+            "You're not just my girlfriend, you're my peace, my home, my everything 🏡❤️",
+            "Just a reminder: you’re the cutest human on the planet. No arguments 😘",
+            "I didn’t believe in perfect people until I met you.",
+            "If I had a flower for every time I thought of you, I’d have a whole garden 🌸",
+            "You're my favorite notification 🥺📱",
+            "With you, every moment feels like magic ✨",
+            "You're the 'LISAA' to my 'Evian' – my favorite combo 😚",
+            "If love had a face, it’d look just like you 💘"
+        ];
+
+        function generateMessage() {
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            document.getElementById("message").textContent = randomMessage;
+        }
+
+        // Love Heart Animation
+        function showHeart() {
+            const heart = document.createElement("div");
+            heart.textContent = "❤️";
+            heart.classList.add("heart-animation");
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 1500);
+        }
+
+        // Confetti Effect
+        function playConfetti() {
+            const confetti = document.getElementById("confetti");
+            confetti.style.display = "block";
+            for (let i = 0; i < 100; i++) {
+                const confettiPiece = document.createElement("div");
+                confettiPiece.style.left = `${Math.random() * 100}%`;
+                confettiPiece.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                confetti.appendChild(confettiPiece);
+            }
+
+            // Hide confetti after animation
+            setTimeout(() => {
+                confetti.style.display = "none";
+                confetti.innerHTML = ''; // Clear confetti pieces
+            }, 5000);
+        }
+
+        // Add Cool Name Animation
+        const lisaa = document.getElementById("lisaa");
+        lisaa.style.animation = "heartBeat 1.5s infinite alternate";
+    </script>
+</body>
+</html>
